@@ -1,9 +1,9 @@
 const User = require('../models/user');
 
-const getUser = async(req, res) => {
+const loginUser = async(req, res) => {
     let data;
     try {
-        data = await User.find({'username': req.body.username, 'password': req.body.password}, )
+        data = await User.find({'email': req.body.email, 'password': req.body.password}, '-_id')
         res.status(200).json(data);
     } catch (error) {
         console.log('Error:', error)
@@ -11,7 +11,7 @@ const getUser = async(req, res) => {
 }
 
 const user = {
-    getUser
+    loginUser
 }
 
 module.exports = user
