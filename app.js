@@ -7,7 +7,7 @@ const usersApi = require('./controllers/usersapi')
 require('./utils/dbmongo');
 
 app.get('/', (req, res) => {
-    res.send('Mierda mundo')
+    res.send('Hola mundo')
 });
 
 app.get('/api/users', usersApi.getUser)
