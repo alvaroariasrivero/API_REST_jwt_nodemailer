@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const usersApiRouter = require('./routes/userApi');
-const productApiRouter = require('./routes/productApi');
+const productApiRouter = require('./routes/productApi.js');
 const errors = require('./middlewares/errors');
 
 app.use(express.json())
@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 
 //Rutas API
 app.use('/api', usersApiRouter);
-app.use('/api',productApiRouter);
+app.use('/api', productApiRouter);
 
 //Capture All 404 errors
 app.use(errors.error404);

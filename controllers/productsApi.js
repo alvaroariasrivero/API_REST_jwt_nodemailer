@@ -1,6 +1,4 @@
-const dataProduct = require('../utils/product')
-const Product = require('../models/product')
-
+const Product = require('../models/product');
 
 const getProduct = async (req,res) => {
     console.log("*******************");

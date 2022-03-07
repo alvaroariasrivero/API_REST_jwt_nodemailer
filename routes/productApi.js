@@ -1,5 +1,4 @@
-const productApi = require('../controllers/productApi')
-const hasApiKey = require('../middlewares/hasApiKey')
+const productApi = require('../controllers/productsApi')
 const routes = require('express').Router();
 
 
@@ -9,6 +8,6 @@ const routes = require('express').Router();
 // http://localhost:3000/api/products/3
 // http://localhost:3000/api/products
 routes.get('/products/:id?', productApi.getProduct);
-routes.post('/products',hasApiKey, productApi.createProduct); // se pide API_KEY para crear productos
+routes.post('/products', productApi.createProduct); // se pide API_KEY para crear productos
 
 module.exports = routes;
