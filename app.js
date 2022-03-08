@@ -1,14 +1,16 @@
 const express = require('express');
-const app = express();
-const port = 3000;
+require('dotenv').config();
+require('./utils/dbmongo');
+
 const usersApiRouter = require('./routes/userApi');
 const productApiRouter = require('./routes/productApi.js');
 const errors = require('./middlewares/errors');
 
+const app = express();
+const port = 3000;
+
 app.use(express.json())
 
-require('dotenv').config();
-require('./utils/dbmongo');
 
 app.get('/', (req, res) => {
     res.send('Hola mundo')

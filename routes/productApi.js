@@ -1,5 +1,5 @@
-const productApi = require('../controllers/productsApi')
 const routes = require('express').Router();
+const productApi = require('../controllers/productsApi')
 
 
 
