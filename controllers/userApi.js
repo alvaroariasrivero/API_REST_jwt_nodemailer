@@ -15,7 +15,7 @@ const loginUser = async(req, res) => {
             const token = jwt.sign(userForToken, config, {expiresIn: '1d'})
             res.cookie('jwt',
                 token,{
-                    httpOnly:true,
+                    httpOnly: true,
                     secure: false //Set to true in production
                 })
                 .status(200).json({

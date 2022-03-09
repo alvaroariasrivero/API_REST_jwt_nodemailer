@@ -6,7 +6,7 @@ const protectedRoutes = express.Router();
 
 protectedRoutes.use((req, res, next) => {
     const token = req.headers['access-token'];
-	
+
     if (token) {
       jwt.verify(token, config, (err, decoded) => {      
         if (err) {
