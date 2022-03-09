@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 require('dotenv').config();
 require('./utils/dbmongo');
 
@@ -9,6 +10,7 @@ const errors = require('./middlewares/errors');
 const app = express();
 const port = 3000;
 
+app.use(cors())
 app.use(express.json())
 
 app.get('/', (req, res) => {
