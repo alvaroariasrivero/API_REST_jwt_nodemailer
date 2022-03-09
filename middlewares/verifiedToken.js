@@ -5,7 +5,7 @@ const config = process.env.ULTRA_SECRET_KEY;
 const protectedRoutes = express.Router();
 
 protectedRoutes.use((req, res, next) => {
-    const token = req.headers['access-token'];
+    const token = req.headers['authorization'];
 
     if (token) {
       jwt.verify(token, config, (err, decoded) => {      
