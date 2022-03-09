@@ -16,19 +16,13 @@ const getProduct = async (req,res) => {
 }
 
 const createProduct = async (req,res) => {
-    console.log("***************");
-    // Se guardaran cosas en la BBDD
-    console.log(req.body); // En req.body está el objeto a guardar
-    // Guardar en la BBDD MongoDB
-
     try{
-        // const product = new Product(req.body); // Genero el nuevo documento
-        // const result = await product.save(); // Lo guarda en BBDD
+        const product = new Product(req.body); // Genero el nuevo documento
+        const result = await product.save(); // Lo guarda en BBDD
 
-        // console.log("Producto creado!!!!!**************");
-        // console.log(result);
-        // res.status(201).json(result);
-        res.status(200).json({msg: 'logrado'})
+        console.log('Product created');
+        console.log(result);
+        res.status(201).json(result);
     } catch(err){
         res.status(400).json({"error":err})
     }  

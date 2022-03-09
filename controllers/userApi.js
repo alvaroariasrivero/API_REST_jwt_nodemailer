@@ -13,12 +13,7 @@ const loginUser = async(req, res) => {
                 username: username,
             }
             const token = jwt.sign(userForToken, config, {expiresIn: '1d'})
-            res.cookie('jwt',
-                token,{
-                    httpOnly: true,
-                    secure: false //Set to true in production
-                })
-                .status(200).json({
+            res.status(200).json({
                 email: email,
                 username: username,
                 msg:'Correct authentication',
