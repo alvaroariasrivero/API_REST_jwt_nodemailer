@@ -3,6 +3,8 @@ const userApi = require('../controllers/userApi')
 
 routes.post('/login', userApi.loginUser);
 routes.post('/signup', userApi.signUpUser);
+routes.get('/recoverpassword/:email', userApi.recoverPassword);
+routes.put('/resetpassword/:recoverToken', userApi.resetPassword);
 // routes.post('/logout', (req, res) => {
 //     if (req.cookies['jwt']) {
 //         res
