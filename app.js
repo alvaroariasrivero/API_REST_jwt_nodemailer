@@ -9,7 +9,8 @@ const errors = require('./middlewares/errors');
 const app = express();
 const port = 3000;
 
-app.use(express.json())
+app.use(express.json());
+app.set('view engine', 'pug');
 
 app.get('/', (req, res) => {
     res.send('Hola mundo')
