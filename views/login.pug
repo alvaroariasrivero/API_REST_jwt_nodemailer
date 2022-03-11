@@ -8,17 +8,8 @@ html(lang="en")
     body 
         include ./header.pug
         h2 Login 
-        form(action="/api/login"
-            method="POST")
-            div                                              
-                input(
-                    type="email"
-                    placeholder="Email"
-                    name="email")                            
-                input(
-                    type="password"
-                    placeholder="Password"
-                    name="password")                            
-                button(
-                type="submit"
-                ) Login
+        form(action="/api/login" method="POST")
+            div(class="containerdiv")
+                input(type="email" placeholder="Email" name="email")
+                input(type="password" placeholder="Password" name="password")
+                button(type="submit") Ingresar

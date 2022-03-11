@@ -8,21 +8,9 @@ html(lang="en")
     body 
         include ./header.pug
         h2 SignUp 
-        form(action="/api/signup"
-            method="POST")
+        form(action="/api/signup" method="POST")
             div                      
-                input(
-                    type="text"
-                    placeholder="Username"
-                    name="username")                        
-                input(
-                    type="email"
-                    placeholder="Email"
-                    name="email")                            
-                input(
-                    type="password"
-                    placeholder="Password"
-                    name="password")                            
-                button(
-                type="submit"
-                ) SignUp
+                input(type="text" placeholder="Username" name="username")                        
+                input(type="email" placeholder="Email" name="email")                            
+                input(type="password" placeholder="Password" name="password")                            
+                button(type="submit") SignUp
