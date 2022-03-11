@@ -1,4 +1,5 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 require('dotenv').config();
 require('./utils/dbmongo');
 
@@ -10,6 +11,9 @@ const app = express();
 const port = 3000;
 
 app.use(express.json());
+app.use(express.urlencoded());
+app.use(cookieParser());
+
 app.set('view engine', 'pug');
 app.set('views','./views');
 
