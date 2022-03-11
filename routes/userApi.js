@@ -6,9 +6,9 @@ routes.post('/signup', userApi.signUpUser);
 routes.get('/recoverpassword/:email', userApi.recoverPassword);
 routes.put('/resetpassword/:recoverToken', userApi.resetPassword);
 routes.post('/logout', (req, res) => {
-    if (req.cookies['jwt']) {
+    if (req.cookies['access_token']) {
         res
-        .clearCookie('jwt')
+        .clearCookie('access_token')
         .status(200)
         .json({
         msg: 'Token deleted'

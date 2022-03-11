@@ -35,7 +35,7 @@ const signUpUser = async(req, res) => {
     let data;
     try {
         data = await User.create({'email': req.body.email, 'password': req.body.password, 'username': req.body.username});
-        res.status(200).json(data);
+        res.status(201).json(data);
     } catch (error) {
         console.log('Error:', error);
     }
