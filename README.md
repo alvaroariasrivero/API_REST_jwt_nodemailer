@@ -1,4 +1,4 @@
-# jwt_nodemailer_workshop
+# JWT Nodemailer Workshop :e-mail:
 
 API REST of users and products
 

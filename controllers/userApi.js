@@ -14,9 +14,13 @@ const loginUser = async(req, res) => {
                 username: username,
             };
             const token = jwt.sign(userForToken, jwt_secret, {expiresIn: '1d'});
-            res.status(200).json({
-                email: email,
-                username: username,
+            res
+            .cookie('access_token', token, {
+                httpOnly: true,
+                secure: false,
+            })
+            .status(200)
+            .json({
                 msg:'Correct authentication',
                 token: token});
         }else {
