@@ -13,12 +13,13 @@ const loginUser = async(req, res) => {
                 email: email,
                 username: username,
             };
-            const token = jwt.sign(userForToken, jwt_secret, {expiresIn: '1d'});
+            const token = jwt.sign(userForToken, jwt_secret, {expiresIn: '20m'});
+            await User.updateOne({ email: email }, { token: token })
             res
-            .cookie('access_token', token, {
-                httpOnly: true,
-                secure: false,
-            })
+            // .cookie('access_token', token, {
+            //     httpOnly: true,
+            //     secure: false,
+            // })
             .status(200)
             .json({
                 msg:'Correct authentication',
@@ -35,7 +36,7 @@ const signUpUser = async(req, res) => {
     let data;
     try {
         data = await User.create({'email': req.body.email, 'password': req.body.password, 'username': req.body.username});
-        res.status(200).json(data);
+        res.status(201).json(data);
     } catch (error) {
         console.log('Error:', error);
     }
@@ -43,7 +44,7 @@ const signUpUser = async(req, res) => {
 
 const recoverPassword = async(req, res) => {
     try {
-        const recoverToken = jwt.sign({email: req.params.email}, jwt_secret, {expiresIn: '48h'});
+        const recoverToken = jwt.sign({email: req.params.email}, jwt_secret, {expiresIn: '20m'});
         const url = "http://localhost:3000/api/resetPassword/" + recoverToken;
         await transporter.sendMail({
             to: req.params.email,
@@ -74,11 +75,22 @@ const resetPassword = async(req, res) => {
     }
 }
 
+const logout = async(req, res) => {
+    let data;
+    try {
+        data = await User.updateOne({ token: req.params.userToken }, { $unset : { token : 1} });
+        res.status(200).json({message: 'Token deleted'});
+    } catch (error) {
+        console.log('Error:', error);
+    }
+}
+
 const user = {
     loginUser,
     signUpUser,
     recoverPassword,
-    resetPassword
+    resetPassword,
+    logout
 };
 
 module.exports = user;
