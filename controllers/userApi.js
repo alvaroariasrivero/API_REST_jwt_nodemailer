@@ -2,8 +2,6 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const transporter = require('../config/nodemailer');
 const jwt_secret = process.env.ULTRA_SECRET_KEY;
-// const refreshTokenSecret = process.env.ULTRA_SECRET_TEMPORAL_KEY;
-// const refreshTokens = [];
 
 const loginUser = async(req, res) => {
     let data;
