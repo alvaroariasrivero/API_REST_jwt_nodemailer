@@ -3,7 +3,7 @@ const userApi = require('../controllers/userApi')
 
 routes.post('/login', userApi.loginUser);
 routes.post('/signup', userApi.signUpUser);
-routes.get('/logout/:userToken', userApi.logout)
+routes.get('/logout/:email', userApi.logout)
 routes.get('/recoverpassword/:email', userApi.recoverPassword);
 routes.put('/resetpassword/:recoverToken', userApi.resetPassword);
 

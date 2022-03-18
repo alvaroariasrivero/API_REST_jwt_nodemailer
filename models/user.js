@@ -4,7 +4,7 @@ const objectSchema = {
     username: String,
     email: String,
     password: String,
-    token: String
+    logged: Boolean
 }
 
 const userSchema = mongoose.Schema(objectSchema);

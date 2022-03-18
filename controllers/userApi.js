@@ -8,13 +8,13 @@ const loginUser = async(req, res) => {
     try {
         data = await User.findOne({'email': req.body.email, 'password': req.body.password}, '-_id -__v');
         if(data){
+            await User.updateOne({ email: req.body.email }, { logged: true })
             const {email, username} = data;
             const userForToken = {
                 email: email,
                 username: username,
             };
             const token = jwt.sign(userForToken, jwt_secret, {expiresIn: '20m'});
-            await User.updateOne({ email: email }, { token: token })
             res
             // .cookie('access_token', token, {
             //     httpOnly: true,
@@ -78,7 +78,8 @@ const resetPassword = async(req, res) => {
 const logout = async(req, res) => {
     let data;
     try {
-        data = await User.updateOne({ token: req.params.userToken }, { $unset : { token : 1} });
+        // data = await User.updateOne({ token: req.params.userToken }, { $unset : { token : 1} });
+        data = await User.updateOne({ email: req.params.email }, { logged: false })
         res.status(200).json({message: 'Token deleted'});
     } catch (error) {
         console.log('Error:', error);
