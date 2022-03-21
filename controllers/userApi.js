@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
 const transporter = require('../config/nodemailer');
+const regex = require('../utils/regex');
 const jwt_secret = process.env.ULTRA_SECRET_KEY;
 const saltRounds = 10;
 
@@ -37,8 +38,14 @@ const signUpUser = async(req, res) => {
     try {
         const {email, password, username} = req.body;
         const hashPassword = await bcrypt.hash(password, saltRounds);
-        data = await User.create({'email': email, 'password': hashPassword, 'username': username, 'logged': false});
-        res.status(201).json(data);
+        console.log('Esto es regex email', regex.validateEmail(email))
+        console.log('Esto es regex password', regex.validatePassword(password))
+        if(regex.validateEmail(email) && regex.validatePassword(password)){
+            data = await User.create({'email': email, 'password': hashPassword, 'username': username, 'logged': false});
+            res.status(201).json(data);
+        }else{
+            res.status(400).json({msg: 'Invalid email or password'});
+        }
     } catch (error) {
         console.log('Error:', error);
     }
