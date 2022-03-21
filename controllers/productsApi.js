@@ -17,8 +17,8 @@ const getProduct = async (req,res) => {
 
 const createProduct = async (req,res) => {
     try{
-        const product = new Product(req.body); // Genero el nuevo documento
-        const result = await product.save(); // Lo guarda en BBDD
+        const product = new Product(req.body);
+        const result = await product.save();
 
         console.log('Product created');
         console.log(result);
