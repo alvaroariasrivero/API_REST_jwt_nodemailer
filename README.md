@@ -1,11 +1,14 @@
 # JWT Nodemailer Workshop :e-mail:
 
-API REST of users and products
+API REST of users and products with recover and reset password
 
-When login copy the json web token provided by your Rest Client
+## Libraries
 
-Make a GET or Post petition with your Rest Client to the route products
-
-Add a new header with the name authorization
-
-Paste the token in "Header Value" field
+- Express
+- Bcrypt
+- Nodemailer
+- Dotenv
+- Jsonwebtoken
+- Mongoose
+- Nodemailer
+- Pug
