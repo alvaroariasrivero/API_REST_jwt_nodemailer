@@ -25,4 +25,4 @@ protectedRoutes.use((req, res, next) => {
     }
  });
 
- module.exports = protectedRoutes;
+module.exports = protectedRoutes;
