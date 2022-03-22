@@ -3,6 +3,6 @@ const productApi = require('../controllers/productsApi');
 const protectedRoutes = require('../middlewares/verifiedToken')
 
 routes.get('/products/:id?', protectedRoutes, productApi.getProduct);
-routes.post('/products', protectedRoutes, productApi.createProduct); // se pide API_KEY para crear productos
+routes.post('/products', protectedRoutes, productApi.createProduct);
 
 module.exports = routes;
