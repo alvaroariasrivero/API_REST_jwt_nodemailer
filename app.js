@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
     res.render('home')
 });
 
-//Rutas API
+//API routes
 app.use('/api', usersApiRouter);
 app.use('/api', productApiRouter);
 
