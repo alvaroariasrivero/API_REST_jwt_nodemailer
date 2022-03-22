@@ -38,8 +38,6 @@ const signUpUser = async(req, res) => {
     try {
         const {email, password, username} = req.body;
         const hashPassword = await bcrypt.hash(password, saltRounds);
-        console.log('Esto es regex email', regex.validateEmail(email))
-        console.log('Esto es regex password', regex.validatePassword(password))
         if(regex.validateEmail(email) && regex.validatePassword(password)){
             data = await User.create({'email': email, 'password': hashPassword, 'username': username, 'logged': false});
             res.status(201).json(data);
@@ -75,11 +73,13 @@ const resetPassword = async(req, res) => {
         const recoverToken = req.params.recoverToken;
         const payload = jwt.verify(recoverToken, jwt_secret);
         const password = req.body.password
-        const hashPassword = await bcrypt.hash(password, saltRounds);
-        await User.findOneAndUpdate(
-            {email: payload.email},
-            {password: hashPassword}
-        );
+        if(regex.validatePassword(password)){
+            const hashPassword = await bcrypt.hash(password, saltRounds);
+            await User.findOneAndUpdate(
+                {email: payload.email},
+                {password: hashPassword}
+            );
+        }
         res.status(200).json({message: 'Password actualized'});
     } catch (error) {
         console.log('Error:', error);
