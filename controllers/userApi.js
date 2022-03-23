@@ -4,6 +4,7 @@ const User = require('../models/user');
 const transporter = require('../config/nodemailer');
 const regex = require('../utils/regex');
 const jwt_secret = process.env.ULTRA_SECRET_KEY;
+const urlRecoverPassword = process.env.URL_RECOVER;
 const saltRounds = 10;
 
 const loginUser = async(req, res) => {
@@ -56,7 +57,7 @@ const signUpUser = async(req, res) => {
 const recoverPassword = async(req, res) => {
     try {
         const recoverToken = jwt.sign({email: req.params.email}, jwt_secret, {expiresIn: '20m'});
-        const url = "http://localhost:3000/api/resetpassword/" + recoverToken;
+        const url = `${urlRecoverPassword}/api/resetpassword/` + recoverToken;
         await transporter.sendMail({
             to: req.params.email,
             subject: 'Recover Password',
