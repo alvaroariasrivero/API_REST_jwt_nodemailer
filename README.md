@@ -16,7 +16,7 @@ API REST of user login/sign-up, logout and view and edit a list of products with
 ## Tutorial
 
 The first step is to change the configuration of your Google account to allow less secure app access to send mails by nodemailer.
-![img](./assets/lesssecureapps)
+![img](./assets/lesssecureapps.png)
 
 Then go to your Rest Client (I use Advanced Rest Client) and make your signup request.
 ![img](./assets/signup.gif)
