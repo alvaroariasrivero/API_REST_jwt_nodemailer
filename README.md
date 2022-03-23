@@ -34,7 +34,7 @@ Now, paste your token in the header and make a GET request to see the products.
 ![img](.assets/getproducts.gif)
 
 You can make POST request to create a product and insert it in the DB.
-![img](.assets/createproduct.gif)
+![img](assets/createproduct.gif)
 
 If you make a logout, the logged value will change to false and you wouldn't get or create products untill login again.
 ![img](.assets/logout.gif)
