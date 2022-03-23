@@ -12,3 +12,8 @@ API REST of user login/sign-up, logout and view and edit a list of products with
 - Mongoose
 - Nodemailer
 - Pug
+
+## Tutorial
+
+The first step is to change the configuration of your Google account to allow less secure app access to send mails by nodemailer.
+![img](./assets/lesssecureapps.png)
