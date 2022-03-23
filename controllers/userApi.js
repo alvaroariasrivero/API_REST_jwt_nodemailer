@@ -56,13 +56,13 @@ const signUpUser = async(req, res) => {
 const recoverPassword = async(req, res) => {
     try {
         const recoverToken = jwt.sign({email: req.params.email}, jwt_secret, {expiresIn: '20m'});
-        const url = "http://localhost:3000/api/resetPassword/" + recoverToken;
+        const url = "http://localhost:3000/api/resetpassword/" + recoverToken;
         await transporter.sendMail({
             to: req.params.email,
             subject: 'Recover Password',
             html: `<h3>Recover Password</h3>
                 <a href = ${url}>Click to recover password</a>
-                <p>Link will expire in 48 hours</p>`
+                <p>Link will expire in 20 minutes</p>`
         });
         res.status(200).json({
             message: 'A recovery email has been sent to your mail direction'
