@@ -24,13 +24,12 @@ const objectSchema = {
             validator: function(url){
                 return url.indexOf('.jpg') != -1;
             }, 
-            message: "Porfa, sólo imágenes JPG"
+            message: "Only JPG pictures"
         }
     }
 };
-// Crear el esquema
+
 const productSchema = mongoose.Schema(objectSchema);
-// Crear el modelo
 const Product = mongoose.model('Product', productSchema);
 
 module.exports = Product;

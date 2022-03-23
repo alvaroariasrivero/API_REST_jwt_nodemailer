@@ -1,20 +1,25 @@
 const express = require('express');
-const app = express();
-const port = 3000;
+require('dotenv').config();
+require('./utils/dbmongo');
+
 const usersApiRouter = require('./routes/userApi');
 const productApiRouter = require('./routes/productApi.js');
 const errors = require('./middlewares/errors');
 
-app.use(express.json())
+const app = express();
+const port = 3000;
 
-require('dotenv').config();
-require('./utils/dbmongo');
+app.use(express.json());
+app.use(express.urlencoded());
+
+app.set('view engine', 'pug');
+app.set('views','./views');
 
 app.get('/', (req, res) => {
-    res.send('Hola mundo')
+    res.render('home')
 });
 
-//Rutas API
+//API routes
 app.use('/api', usersApiRouter);
 app.use('/api', productApiRouter);
 
