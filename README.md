@@ -23,7 +23,7 @@ Then go to your Rest Client (I use Advanced Rest Client) and make your signup re
 
 ![img](/assets/signup.gif)
 
-This will create a document in your DB with tha user data. Logged value will be false by default.
+This will create a document in your DB with the user data. Logged value will be false by default.
 
 ![img](/assets/signdoc.png)
 
