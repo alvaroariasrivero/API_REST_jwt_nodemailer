@@ -10,7 +10,6 @@ API REST of user login/sign-up, logout and view and edit a list of products with
 - Dotenv
 - Jsonwebtoken
 - Mongoose
-- Nodemailer
 - Pug
 
 ## Tutorial
